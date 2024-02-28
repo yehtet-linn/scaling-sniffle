@@ -60,24 +60,25 @@ export default function Home() {
   // const result = useMemo<number>(() => fib(myNum), [myNum]);
 
   return (
-    // <>
-    //   <Heading title="Welcome" />
-    //   <Section>This is a section.</Section>
-    //   <Counter setCount={setCount}>Count is {count}</Counter>
-    //   <List
-    //     items={["Dairy", "Beverage", "Vegetables"]}
-    //     render={(item: string) => <span className="gold">{item}</span>}
-    //   ></List>
-    // </>
-    <div className="App">
-      <h1>{count}</h1>
-      <button type="button" onClick={addOne}>
-        Add
-      </button>
-      {/* <h2>{result}</h2> */}
-      <div>
-        <input type="text" ref={ref} title="content" />
-      </div>
-    </div>
+    <>
+      <Heading title="Welcome" />
+      <Section>This is a section.</Section>
+      {/* <Counter setCount={setCount}>Count is {count}</Counter> */}
+      <Counter>{(num: number) => <>Current Count is {num}</>}</Counter>
+      <List
+        items={["Dairy", "Beverage", "Vegetables"]}
+        render={(item: string) => <span className="gold">{item}</span>}
+      ></List>
+    </>
+    // <div className="App">
+    //   <h1>{count}</h1>
+    //   <button type="button" onClick={addOne}>
+    //     Add
+    //   </button>
+    //   {/* <h2>{result}</h2> */}
+    //   <div>
+    //     <input type="text" ref={ref} title="content" />
+    //   </div>
+    // </div>
   );
 }
