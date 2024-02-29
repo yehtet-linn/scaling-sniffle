@@ -12,6 +12,7 @@ import Counter from "./components/Counter";
 import Heading from "./components/Heading";
 import Section from "./components/Section";
 import List from "./components/List";
+import { CounterProvider } from "./context/CounterContext";
 
 interface User {
   id: string;
@@ -64,7 +65,9 @@ export default function Home() {
       <Heading title="Welcome" />
       <Section>This is a section.</Section>
       {/* <Counter setCount={setCount}>Count is {count}</Counter> */}
-      <Counter>{(num: number) => <>Current Count is {num}</>}</Counter>
+      <CounterProvider>
+        <Counter>{(num: number) => <>Current Count is {num}</>}</Counter>
+      </CounterProvider>
       <List
         items={["Dairy", "Beverage", "Vegetables"]}
         render={(item: string) => <span className="gold">{item}</span>}
