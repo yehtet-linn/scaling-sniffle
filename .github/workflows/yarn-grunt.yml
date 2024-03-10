@@ -12,26 +12,17 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Node.js and Yarn
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          # Optional: specify Yarn version
-          # yarn-version: 1.x
-
-      - name: Install Yarn
-        run: npm install -g yarn@latest
-
-      - name: Install Grunt CLI
-        run: yarn add grunt-cli --dev
-
-      - name: Install dependencies
-        run: yarn install
 
       - name: Build
-        run: grunt
+        run: |
+          yarn install
+          grunt
