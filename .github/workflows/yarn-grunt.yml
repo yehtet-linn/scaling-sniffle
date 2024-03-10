@@ -1,0 +1,37 @@
+name: NodeJS with Grunt
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node.js and Yarn
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          # Optional: specify Yarn version
+          # yarn-version: 1.x
+
+      - name: Install Yarn
+        run: npm install -g yarn@latest
+
+      - name: Install Grunt CLI
+        run: yarn add grunt-cli --dev
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: grunt
